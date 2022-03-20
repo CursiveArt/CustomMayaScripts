@@ -11,3 +11,6 @@ The process of the script when the export script is executed is as follows
 1. Check what export options selected
 2. Export .mcx files to "_forTransport folder" then convert to .pc2 and delete .mcx files
 3. Move .pc2 files into folders that correspond to the rig that animation was exported from eg "_forTransport/Don0" or if it was a duplicate rig of the same name "_forTransport/Don1"  
+
+### Demo Video
+[![Watch the video](https://img.youtube.com/vi/S0650C90988/maxresdefault.jpg)](https://youtu.be/S0650C90988)
