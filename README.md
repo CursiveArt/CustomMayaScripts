@@ -1,4 +1,6 @@
 # Custom Maya Scripts For Destruna
+![Image of Destruna Maya shelf tools](https://imgur.com/fjechY8.png)
+
 ## Referencing script
 A referencing script that handles deletion and creation of references. Reason we needed a custom tool for this was to create maya references with an enviroment variable in the file path so we could get around the issue with having different drive letters from overseas staff to our in-house structure. An example of this is that MacOS referes to drives as volumes where as windows refereces to them as a letter. By having employees set up an enviroment variable as $DESTRUNA that pointed to the location of the productions assets we could ensure the scene file would work on both in-house and overseas computers. I walked through the team on how to install the scripts and setup the enviroment file.
 
