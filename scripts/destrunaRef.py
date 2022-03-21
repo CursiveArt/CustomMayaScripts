@@ -3,7 +3,6 @@
 
 
 from maya import cmds
-import webbrowser
 import os
 
 # Get location of Maya environment variable
@@ -99,8 +98,3 @@ def checkFile():
             cmds.confirmDialog(t= 'Reference Warning',m= 'The following references have errors:' + '\n' + refList + '\n\n' + "These references aren't in the " + '"' + crtStru + '" folder and should be moved there or deleted as soon as possible. Paths have remained unchanged.')
                 
                 
-def theButton():
-    # Don't spoil it you must find the button in maya :)
-    url = 'https://imgur.com/a/xaXYxjO'
-    webbrowser.open_new_tab(url)
-    

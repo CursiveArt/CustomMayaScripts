@@ -3,9 +3,11 @@ from maya import cmds as mc
 import shutil 
 import os
 import re
+import importlib
 from re import search
 from os import listdir, path
 from os.path import isfile, join
+
 
 
 #main export function
@@ -15,7 +17,6 @@ def export(*args):
     passCnt = int(mc.textField('cachePass', q=1, text=1))
     #checks if cache directory has been defined by user if not displays error
     if cacheDir != "":
-        print("pass")
         #modifies path to follow Destruna structure
         cachePass = os.path.join(cacheDir, "_forTransport", "sceneCache", "pass" + str(passCnt))
         print("Caching to " + cacheDir + ", pass count is " + str(passCnt))
@@ -36,9 +37,9 @@ def export(*args):
         mc.error("No rigs detected. Please add a rig and refresh the list")
     geoNames = mc.listRelatives(geoNames, typ = "mesh")
     #getting the relatives of geo includes the origShape which on our rigs has no animation so best to filter it out
-    geoNames = filter(lambda k: "geoShapeOrig" not in k, geoNames)
-    #remove anything thats not the geoShape eg polysurfaces
-    geoNames = filter(lambda k: "geoShape" in k, geoNames)
+    geoNames = list(filter(lambda k: "geoShapeOrig" not in k, geoNames))
+    #remove anything thats not the geoShape eg polysurfaces or objects that dont follow the naming convention by having "_geo" at the end
+    geoNames = list(filter(lambda k: "geoShape" in k, geoNames))
     #prompt user if cache pass is present if they want to overwrite it
     if path.exists(cachePass) == 1:
         confirmOverwrite = mc.confirmDialog( title='Confirm', message= "Pass " + str(passCnt) + " exists. Overwrite it?", button=['Yes','No'], defaultButton='Yes', cancelButton='No', dismissString='No' )
@@ -73,10 +74,10 @@ def exportPC2(cachePass, passCnt, geoNames, exportList):
     mc.cacheFile(st=frameMin, et=frameMax, points= geoNames, dir = cachePass, fm = "OneFile", cacheFormat = "mcx")
     #list cached files, filter for .mcx. pc2 files can only be made from .mcx or .mcc
     cachedFiles = [f for f in listdir(cachePass) if isfile(join(cachePass, f))]
-    cacheFilesFiltered = filter(lambda k: ".mcx" in k, cachedFiles)
+    cacheFilesFiltered = list(filter(lambda k: ".mcx" in k, cachedFiles))
     for file in cacheFilesFiltered:
         pc2File = os.path.join(cachePass,os.path.dirname('.')) + file.replace("mcx", "pc2") 
-        print pc2File
+        print(pc2File)
         mc.cacheFile(pc2=0, f = file , pcf = pc2File, dir = os.path.join(cachePass,os.path.dirname('.')))
     #remove files that aren't .pc2. Maybe infuture keep these and use them in maya for previews.
     cacheFilesDel = filter(lambda k: ".pc2" not in k, cachedFiles)
@@ -109,7 +110,7 @@ def organiseExportPC2(cachePass,exportList,geoNames):
         else: 
             namespaceNum = "0"
             print("Original geometry, assigning cache number " + namespaceNum)
-        #creates folders based off the rig name and its namespace number
+        #creates folders based off the rig name and its namespace number. For ease of reading in the rig structure the name should always be in the Geometry grp eg koGeometry instead of just Geometry.
         rigFolder = os.path.join(os.path.join(cachePass,os.path.dirname('.')), rigName.replace("Geometry", "Cache") + namespaceNum)
         if (path.exists(rigFolder)) != 1:
             print("Creating " + rigName.replace("Geometry", "Cache") + namespaceNum + " folder")
@@ -191,7 +192,7 @@ def rigSelMode(*args):
 def refreshRigList(*args):  
     listRefs = mc.ls(rn=1)
     refTransGrps = mc.listRelatives(listRefs, type='transform') or "" #find grps in transforms
-    rigGeoGrps = filter(lambda k: "Geometry" in k, refTransGrps)  #find 'Geometry' in grps
+    rigGeoGrps = list(filter(lambda k: "Geometry" in k, refTransGrps))  #find 'Geometry' in grps
     rigsToProcess = len(rigGeoGrps)
     mc.textScrollList(cachingUI.rigSelect, edit=1, ra=1) #need to clear list before adding items in list again
     if rigsToProcess == 0:
