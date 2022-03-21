@@ -28,12 +28,12 @@ global proc shelf_Destruna () {
         -imageOverlayLabel "Ref+" 
         -overlayLabelColor 0.780804 1 0.527 
         -overlayLabelBackColor 0 0 0 0.3 
-        -image "D:/Documents/maya/2019/prefs/icons/destruna_addRef_icon.png" 
-        -image1 "D:/Documents/maya/2019/prefs/icons/destruna_addRef_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_addRef_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_addRef_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import destrunaRef\nreload(destrunaRef)\ndestrunaRef.loadRef()" 
+        -command "import importlib\nimport destrunaRef\nimportlib.reload(destrunaRef)\ndestrunaRef.loadRef()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -62,12 +62,12 @@ global proc shelf_Destruna () {
         -imageOverlayLabel "Ref-" 
         -overlayLabelColor 0.780804 1 0.527 
         -overlayLabelBackColor 0 0 0 0.3 
-        -image "D:/Documents/maya/2019/prefs/icons/destruna_removeRef_icon.png" 
-        -image1 "D:/Documents/maya/2019/prefs/icons/destruna_removeRef_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_removeRef_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_removeRef_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import destrunaRef\nreload(destrunaRef)\ndestrunaRef.delRef()" 
+        -command "import importlib\nimport destrunaRef\nimportlib.reload(destrunaRef)\ndestrunaRef.delRef()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -96,8 +96,8 @@ global proc shelf_Destruna () {
         -imageOverlayLabel "Edit" 
         -overlayLabelColor 0.780804 1 0.527 
         -overlayLabelBackColor 0 0 0 0.3 
-        -image "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_editRef_icon.png" 
-        -image1 "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_editRef_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_editRef_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_editRef_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
@@ -130,12 +130,12 @@ global proc shelf_Destruna () {
         -imageOverlayLabel "Check" 
         -overlayLabelColor 0.780804 1 0.527 
         -overlayLabelBackColor 0 0 0 0.3 
-        -image "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_updateRef_icon.png" 
-        -image1 "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_updateRef_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_updateRef_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_updateRef_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import destrunaRef\nreload(destrunaRef)\ndestrunaRef.checkFile()" 
+        -command "import importlib\nimport destrunaRef\nimportlib.reload(destrunaRef)\ndestrunaRef.checkFile()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -177,12 +177,12 @@ global proc shelf_Destruna () {
         -imageOverlayLabel "Export" 
         -overlayLabelColor 0.780804 1 0.527 
         -overlayLabelBackColor 0 0 0 0.3 
-        -image "E:/Documents/maya/2019/prefs/icons/destruna_export_icon.png" 
-        -image1 "E:/Documents/maya/2019/prefs/icons/destruna_export_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_export_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_export_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import destrunaExport\nreload(destrunaExport)\ndestrunaExport.cachingUI()" 
+        -command "import importlib\nimport destrunaExport\nimportlib.reload(destrunaExport)\ndestrunaExport.cachingUI()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -223,8 +223,8 @@ global proc shelf_Destruna () {
         -useAlpha 1
         -overlayLabelColor 0 0 0 
         -overlayLabelBackColor 0 0 0 0 
-        -image "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_icon.png" 
-        -image1 "C:/Users/TechFast australia/Documents/maya/2019/prefs/icons/destruna_icon.png" 
+        -image "MAYA_APP_DIR/2022/prefs/icons/destruna_icon.png" 
+        -image1 "MAYA_APP_DIR/2022/prefs/icons/destruna_icon.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
